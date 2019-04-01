@@ -9,7 +9,6 @@ class ArticleValidation {
 
     register(_c, info, done) {
         hooks.bind('article_validating', 1, extra => {
-            console.log(extra.errors);
             const contentDOM = new JSDOM(extra.post.content[0]);
             const doc =contentDOM.window.document;
             const ads = doc.querySelectorAll('.lml-adplaceholder');
