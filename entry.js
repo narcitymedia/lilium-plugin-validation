@@ -14,8 +14,6 @@ class ArticleValidation {
             const doc =contentDOM.window.document;
             const ads = doc.querySelectorAll('.lml-adplaceholder');
             if (!ads.length) extra.errors.content = { message: 'The content must include at least 1 advertisement', setBy: 'article_validation' };
-            console.log(extra.errors);
-            
         });
 
         done();        
