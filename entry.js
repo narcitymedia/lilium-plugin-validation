@@ -9,10 +9,12 @@ class ArticleValidation {
 
     register(_c, info, done) {
         hooks.bind('article_validating', 1, extra => {
-            const contentDOM = new JSDOM(extra.post.content[0]);
-            const doc =contentDOM.window.document;
-            const ads = doc.querySelectorAll('.lml-adplaceholder');
-            if (!ads.length) extra.errors.content = { message: 'The content must include at least 1 advertisement', setBy: 'article_validation' };
+            if (!extra.post.isSponsored) {
+                const contentDOM = new JSDOM(extra.post.content[0]);
+                const doc =contentDOM.window.document;
+                const ads = doc.querySelectorAll('.lml-adplaceholder');
+                if (!ads.length) extra.errors.content = { message: 'The content must include at least 1 advertisement', setBy: 'article_validation' };
+            }
         });
 
         done();        
