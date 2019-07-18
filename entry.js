@@ -9,11 +9,11 @@ class ArticleValidation {
 
     register(_c, info, done) {
         hooks.bind('article_validating', 1, extra => {
-            if (extra.post.title[0].length > 90) {
-                extra.errors.title = { message: 'The article title must be shorter than 90 characters. The title has ' + extra.post.title[0].length + ' characters.', setBy: 'article_validation' };
-            }
-
             if (!extra.post.isSponsored) {
+                if (extra.post.title[0].length > 90) {
+                    extra.errors.title = { message: 'The article title must be shorter than 90 characters. The title has ' + extra.post.title[0].length + ' characters.', setBy: 'article_validation' };
+                }
+
                 const contentDOM = new JSDOM(extra.post.content[0]);
                 const doc =contentDOM.window.document;
                 const ads = doc.querySelectorAll('.lml-adplaceholder');
