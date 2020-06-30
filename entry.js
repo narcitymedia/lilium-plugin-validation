@@ -17,7 +17,7 @@ class ArticleValidation {
                 if (extra.post.title[0].length > 90) {
                     extra.errors.title = { message: 'The article title must be shorter than 90 characters. The title has ' + extra.post.title[0].length + ' characters.', setBy: 'article_validation' };
                 } else if (extra.post.seotitle.length > 90) {
-                    extra.errors.seotitle = { message: 'The article SEO title must be shorter than 90 characters. The SEO title has ' + extra.post.title[0].length + ' characters.', setBy: 'article_validation' };
+                    extra.errors.seotitle = { message: 'The article SEO title must be shorter than 90 characters. The SEO title has ' + extra.post.seotitle.length + ' characters.', setBy: 'article_validation' };
                 }
 
                 const contentDOM = new JSDOM(extra.post.content[0]);
